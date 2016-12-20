@@ -42,7 +42,7 @@ namespace QuestionGame
         private void btnScores_Click(object sender, EventArgs e)
         {
             playButtonSound();
-            Form formScores = new Scores();
+            Form formScores = new FormScores();
             this.Hide();
             formScores.ShowDialog();
             this.Close();        

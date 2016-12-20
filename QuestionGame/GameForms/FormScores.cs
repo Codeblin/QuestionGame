@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace QuestionGame
 {
-    public partial class Scores : Form
+    public partial class FormScores : Form
     {
         List<Player> players = new List<Player>();
         string path = Application.StartupPath + @"\scores.json";
         string s = "";
 
-        public Scores()
+        public FormScores()
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;           
             InitializeComponent();
