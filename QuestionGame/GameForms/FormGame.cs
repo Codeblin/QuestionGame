@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Media;
 using System.Linq;
 using System.Windows.Forms;
+using System.IO;
 
 /* Author: Stamatis Stiliatis Togrou
  * 
@@ -40,6 +41,8 @@ namespace QuestionGame
         int mana = 100;
         public static int questionsDisplayed = 0;
         public int index;
+
+        string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
 
         public FormGame()
         {
@@ -167,7 +170,7 @@ namespace QuestionGame
             {
                 if (reveal.available(mana))
                 {
-                    playSound(Application.StartupPath + @"\Resources\Sounds\clarity_sound.wav");
+                    playSound("clarity_sound.wav");
                     //show the picture that overlap the power picture, in result to be unclickable
                     picRevealDisabled.Show();
                     reduceMana(reveal.mana);
@@ -188,7 +191,7 @@ namespace QuestionGame
             {
                 if (fifty.available(mana))
                 {
-                    playSound(Application.StartupPath + @"\Resources\Sounds\fifty_sound.wav");
+                    playSound("fifty_sound.wav");
                     //show the picture that overlap the power picture, in result to be unclickable
                     picFiftyDisabled.Show();
                     reduceMana(fifty.mana);
@@ -209,7 +212,7 @@ namespace QuestionGame
             {
                 if (skip.available(mana))
                 {
-                    playSound(Application.StartupPath + @"\Resources\Sounds\skip_sound.wav");
+                    playSound("skip_sound.wav");
                     //show the picture that overlap the power picture, in result to be unclickable
                     picSkipDisabled.Show();
                     reduceMana(skip.mana);
@@ -354,20 +357,18 @@ namespace QuestionGame
 
         //==================== miscellaneous methods ================
 
-        private List<E> ShuffleList<E>(List<E> qList)
+        private List<Questions> ShuffleList<E>(List<Questions> qList)
         {
-            List<E> randomList = new List<E>();
-
             Random r = new Random();
-            int randomIndex = 0;
-            while (qList.Count > 0)
+            for (int i = qList.Count - 1; i > 0; i--)
             {
-                randomIndex = r.Next(0, qList.Count);//gets a random cell
-                randomList.Add(qList[randomIndex]);//add it to our new shuffled list
-                qList.RemoveAt(randomIndex);//remove it from the original question list 
+                int randomIndex = r.Next(i + 1);
+                Questions temp = qList[i];
+                qList[i] = qList[randomIndex];
+                qList[randomIndex] = temp;
             }
 
-            return randomList; //returns randomly shuffled list
+            return qList; //returns randomly shuffled list
         }
 
         private void setScore()
@@ -418,9 +419,10 @@ namespace QuestionGame
             this.Close();
         }
 
-        private void playSound(string soundPath)
+        private void playSound(string soundName)
         {
-            SoundPlayer timeOverSound = new SoundPlayer(soundPath);
+            string fileName = string.Format("{0}Resources\\Sounds\\" + soundName, Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+            SoundPlayer timeOverSound = new SoundPlayer(fileName);
             timeOverSound.Play();
         }
 
@@ -520,7 +522,7 @@ namespace QuestionGame
             if (timeLimit <= 0)
             {
                 btnNextQuestion.Enabled = true;
-                playSound(Application.StartupPath + @"\Resources\Sounds\ringout.wav");
+                playSound("ringout.wav");
                 timeLimit = 0;
                 timer.Enabled = false;
                 setHealth();

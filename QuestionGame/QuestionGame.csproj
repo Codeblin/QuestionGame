@@ -110,6 +110,16 @@
     <Compile Include="GameClasses\Questions.cs" />
     <Compile Include="GameClasses\Clarity.cs" />
     <Compile Include="GameClasses\Skip.cs" />
+    <Compile Include="Resources\Res.en.Designer.cs">
+      <DependentUpon>Res.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Res.el.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Res.el.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GameForms\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +145,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Resources\Res.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Res.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Res.el.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Res.el.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -161,6 +179,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

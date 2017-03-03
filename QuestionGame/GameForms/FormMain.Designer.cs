@@ -32,9 +32,15 @@
             this.btnStartGame = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnScores = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.btnAbout = new System.Windows.Forms.Button();
+            this.menu = new System.Windows.Forms.MenuStrip();
+            this.options = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemLang = new System.Windows.Forms.ToolStripMenuItem();
+            this.subItemGr = new System.Windows.Forms.ToolStripMenuItem();
+            this.subItemEn = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStartGame
@@ -81,22 +87,22 @@
             this.btnScores.UseVisualStyleBackColor = true;
             this.btnScores.Click += new System.EventHandler(this.btnScores_Click);
             // 
-            // button1
+            // btnExit
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.SpringGreen;
-            this.button1.FlatAppearance.BorderSize = 3;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SpringGreen;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSeaGreen;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(444, 371);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(294, 79);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "EXIT";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.SpringGreen;
+            this.btnExit.FlatAppearance.BorderSize = 3;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SpringGreen;
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSeaGreen;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(444, 371);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(294, 79);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.Text = "EXIT";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnAbout
             // 
@@ -115,6 +121,47 @@
             this.btnAbout.UseVisualStyleBackColor = true;
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
+            // menu
+            // 
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.options});
+            this.menu.Location = new System.Drawing.Point(0, 0);
+            this.menu.Name = "menu";
+            this.menu.Size = new System.Drawing.Size(762, 24);
+            this.menu.TabIndex = 5;
+            this.menu.Text = "menuStrip1";
+            // 
+            // options
+            // 
+            this.options.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemLang});
+            this.options.Name = "options";
+            this.options.Size = new System.Drawing.Size(57, 20);
+            this.options.Text = "Options";
+            // 
+            // itemLang
+            // 
+            this.itemLang.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.subItemGr,
+            this.subItemEn});
+            this.itemLang.Name = "itemLang";
+            this.itemLang.Size = new System.Drawing.Size(160, 22);
+            this.itemLang.Text = "Change Language";
+            // 
+            // subItemGr
+            // 
+            this.subItemGr.Name = "subItemGr";
+            this.subItemGr.Size = new System.Drawing.Size(152, 22);
+            this.subItemGr.Text = "Greek";
+            this.subItemGr.Click += new System.EventHandler(this.subItemGr_Click);
+            // 
+            // subItemEn
+            // 
+            this.subItemEn.Name = "subItemEn";
+            this.subItemEn.Size = new System.Drawing.Size(152, 22);
+            this.subItemEn.Text = "English";
+            this.subItemEn.Click += new System.EventHandler(this.subItemEn_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,17 +169,22 @@
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(762, 481);
             this.Controls.Add(this.btnAbout);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnScores);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnStartGame);
+            this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menu;
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.Text = "Question Game";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -141,8 +193,13 @@
         private System.Windows.Forms.Button btnStartGame;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnScores;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnAbout;
+        private System.Windows.Forms.MenuStrip menu;
+        private System.Windows.Forms.ToolStripMenuItem options;
+        private System.Windows.Forms.ToolStripMenuItem itemLang;
+        private System.Windows.Forms.ToolStripMenuItem subItemGr;
+        private System.Windows.Forms.ToolStripMenuItem subItemEn;
     }
 }
 

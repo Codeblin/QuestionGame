@@ -13,7 +13,6 @@ namespace QuestionGame
     {
         private int id;
 
-        //δεν καταλαβαινω εδω την συνταξη
         public int ID
         {
             get { return id; }
